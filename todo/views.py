@@ -16,7 +16,7 @@ def index(request):
 def add_todo(request):
     formData = TodoForm(request.POST)
     if formData.is_valid():
-        new_todo = Todo(text=request.POST['text_input'])
+        new_todo = Todo(text=formData.cleaned_data['text_input'])
         new_todo.save()
     return redirect('index')
 
